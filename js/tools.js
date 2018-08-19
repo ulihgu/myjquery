@@ -117,11 +117,11 @@ var timer;
 $(function(){
     //轮播事件
     //鼠标放上后显示左右按钮
-    $("#igs").hover(function(){
+ /*    $("#igs").hover(function(){
             $(".btn").show(); 
     },function(){
             $(".btn").hide();
-    });
+    }); */
 
     $(".ig").eq(0).show().siblings().hide();
            showTime(); 
