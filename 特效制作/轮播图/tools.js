@@ -112,3 +112,62 @@ onload = function(){
 //});
 
 //轮播图
+var i = 0;
+var timer;
+$(function(){
+    //轮播事件
+    //鼠标放上后显示左右按钮
+ /*    $("#igs").hover(function(){
+            $(".btn").show(); 
+    },function(){
+            $(".btn").hide();
+    }); */
+
+    $(".ig").eq(0).show().siblings().hide();
+           showTime(); 
+    $(".tab").hover(function(){
+        i =$(this).index();
+        show();
+        clearInterval(timer); //清队轮播
+    },function(){
+        showTime();
+    });
+
+    //点击左边轮动按钮
+    $(".btn1").click(function () {  
+        clearInterval(timer);
+        if(i==0){
+            i = 6;
+        }
+        i--;
+        show();
+        showTime()
+    });
+     //点击右边轮动按钮
+     $(".btn2").click(function () {  
+        clearInterval(timer);
+        if(i==5){
+            i = -1;
+        }
+        i++;
+        show();
+        showTime()
+    });
+});
+
+function show(){
+    $(".ig").eq(i).fadeIn(300).siblings().fadeOut(300);
+    $(".tab").eq(i).addClass("bg").siblings().removeClass("bg");
+}
+
+function showTime(){
+    timer = setInterval(function(){
+        i++;
+        if(i==6)
+        {
+            i = 0;
+        }       
+       // $(".ig").eq(i).show().siblings().hide();//第一种效果
+        show();   
+    },4000);
+}
