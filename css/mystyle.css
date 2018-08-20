@@ -1,0 +1,15 @@
+body{
+    overflow: hidden;
+}
+#dbird{
+    position: absolute;
+}
+.bir_37{
+    transform:rotateY(180deg)
+}
+.bir_38{
+    transform: rotate(-60deg);
+}
+.bir_40{
+    transform: rotate(60deg)
+}

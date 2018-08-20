@@ -111,4 +111,46 @@ onload = function(){
     }); */
 //});
 
-//轮播图
+//飞行的小鸟
+$(function(){
+    var $bird=$("#dbird");
+    var pos = $bird.offset();//获取位置
+    var birdSize = {width:$bird.width(),height:$bird.height()};//获取大小
+    var speed =20;//速度
+    var keyreCode=39;
+    $(document).keydown(function(){
+        var key = event.keyCode;//得到键盘事件
+        if(key!=keyreCode){
+            $bird.removeClass().addClass("bir_"+key);
+        }
+        keyreCode=key;
+        switch(key)
+        {
+            case 37://左
+            pos.left -=speed;
+            if(pos.left<=-birdSize.width){
+                pos.left =$(window).width();
+            }
+            break;
+            case 38://上
+            pos.top -=speed;
+            if(pos.top<=-birdSize.height){
+                pos.top=$(window).width();
+            }
+            break; 
+            case 39://右
+            pos.left +=speed;
+            if(pos.left>=$(window).width()){
+                pos.left=-birdSize.width;
+            }
+            break; 
+            case 40://下
+            pos.top +=speed;
+            if(pos.top>=$(window).height()){
+                pos.top=-birdSize.height;
+            }
+            break;
+        }
+        $bird.offset(pos);
+    });
+});
